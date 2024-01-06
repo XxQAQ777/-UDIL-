@@ -1,0 +1,15 @@
+program{
+int a;
+sync("context-in", "input") = a;
+sync("context-out", "output") = "int";
+text javaProgram = "
+public class HelloWorld {
+    static int output = 0;
+    public static void main(String[] args) {
+        System.out.println(2306);
+        output = 2306+input;
+    }
+}";
+sync("program", "java") = javaProgram;
+a = sync("context-out", "output");
+}
